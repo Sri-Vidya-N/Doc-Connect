@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:health_and_doctor_appointment/screens/register.dart';
-import 'package:health_and_doctor_appointment/screens/signIn.dart';
+import 'package:DocConnect/screens/register.dart';
+import 'package:DocConnect/screens/signIn.dart';
 
 class FireBaseAuth extends StatefulWidget {
   @override
@@ -46,7 +46,7 @@ class _FireBaseAuthState extends State<FireBaseAuth> {
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      'Welcome to Medico!',
+                      'Welcome to DocConnect!',
                       style: GoogleFonts.b612(
                           color: Colors.indigo[800],
                           fontSize: 17,
