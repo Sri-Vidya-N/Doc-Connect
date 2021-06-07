@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:DocConnect/screens/register.dart';
-
+import 'package:DocConnect/screens/forgot_password_screen.dart';
 import '../mainPage.dart';
 
 class SignIn extends StatefulWidget {
@@ -60,10 +60,12 @@ class _SignInState extends State<SignIn> {
           children: <Widget>[
             SizedBox(
               width: double.infinity,
-              child: Container(
-                child: Image.asset(
-                  'assets/vector-doc2.jpg',
-                  scale: 3.5,
+              child: AspectRatio(
+                aspectRatio: 2.2,
+                child: Container(
+                  child: Image.asset(
+                    'assets/vector-doc2.jpg',
+                  ),
                 ),
               ),
             ),
@@ -193,7 +195,9 @@ class _SignInState extends State<SignIn> {
                 style: ButtonStyle(
                     overlayColor:
                         MaterialStateProperty.all(Colors.transparent)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/forgotPassword');
+                },
                 child: Text(
                   'Forgot Password?',
                   style: GoogleFonts.lato(
@@ -221,21 +225,6 @@ class _SignInState extends State<SignIn> {
                       onPressed: () {},
                     ),
                   ),
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.blue[900],
-                        borderRadius: BorderRadius.circular(32)),
-                    child: IconButton(
-                      icon: Icon(
-                        FlutterIcons.facebook_f_faw,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {},
-                    ),
-                  )
                 ],
               ),
             ),

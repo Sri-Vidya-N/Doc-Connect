@@ -7,6 +7,11 @@ import 'package:DocConnect/mainPage.dart';
 import 'package:DocConnect/screens/myAppointments.dart';
 import 'package:DocConnect/screens/skip.dart';
 import 'package:DocConnect/screens/userProfile.dart';
+import 'package:DocConnect/screens/register.dart';
+import 'package:DocConnect/screens/signIn.dart';
+import 'package:DocConnect/screens/forgot_password_screen.dart';
+import 'package:DocConnect/screens/tensorflow.dart';
+import 'package:DocConnect/screens/homePage.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -36,12 +41,17 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => user == null ? Skip() : MainPage(),
+        '/': (context) => SignIn(),
         '/login': (context) => FireBaseAuth(),
         '/home': (context) => MainPage(),
         '/profile': (context) => UserProfile(),
         '/MyAppointments': (context) => MyAppointments(),
         '/DoctorProfile': (context) => DoctorProfile(),
+        '/Tensorflow': (context) => Tensorflow(),
+        '/SignIn': (context) => SignIn(),
+        '/homePage': (context) => HomePage(),
+        '/mainPage': (context) => MainPage(),
+        '/forgotPassword': (context) => ForgotPasswordScreen(),
       },
       theme: ThemeData(brightness: Brightness.light),
       debugShowCheckedModeBanner: false,

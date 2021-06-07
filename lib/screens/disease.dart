@@ -80,7 +80,7 @@ class _DiseaseState extends State<Disease> {
                                   ),
                                 ),
                                 Text(
-                                  document['Symtomps'],
+                                  document['Symptoms'],
                                   style: GoogleFonts.lato(
                                       fontSize: 14, color: Colors.black54),
                                 ),
