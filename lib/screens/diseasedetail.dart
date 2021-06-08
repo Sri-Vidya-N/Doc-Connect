@@ -108,7 +108,7 @@ class _DiseaseDetailState extends State<DiseaseDetail> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Symtomps',
+                                  'Symptoms',
                                   style: GoogleFonts.lato(
                                       color: Colors.black87,
                                       fontSize: 20,
@@ -119,7 +119,7 @@ class _DiseaseDetailState extends State<DiseaseDetail> {
                                   height: 15,
                                 ),
                                 Text(
-                                  document['Symtomps'],
+                                  document['Symptoms'],
                                   style: GoogleFonts.lato(
                                     color: Colors.black54,
                                     fontSize: 18,

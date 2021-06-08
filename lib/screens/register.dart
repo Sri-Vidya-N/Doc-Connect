@@ -280,7 +280,7 @@ class _RegisterState extends State<Register> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 25),
+              padding: EdgeInsets.only(top: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -296,21 +296,6 @@ class _RegisterState extends State<Register> {
                       onPressed: () {},
                     ),
                   ),
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.blue[900],
-                        borderRadius: BorderRadius.circular(32)),
-                    child: IconButton(
-                      icon: Icon(
-                        FlutterIcons.facebook_f_faw,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {},
-                    ),
-                  )
                 ],
               ),
             ),
