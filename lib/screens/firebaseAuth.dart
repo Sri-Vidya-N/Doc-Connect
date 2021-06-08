@@ -57,6 +57,7 @@ class _FireBaseAuthState extends State<FireBaseAuth> {
               ),
             ),
           ),
+
           SafeArea(
             child: Align(
               alignment: Alignment.bottomCenter,

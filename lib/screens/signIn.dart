@@ -1,8 +1,11 @@
+import 'package:DocConnect/Authentication.dart';
+import 'package:DocConnect/screens/homePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:DocConnect/screens/register.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../mainPage.dart';
 
@@ -17,7 +20,7 @@ class _SignInState extends State<SignIn> {
   final TextEditingController _emailController = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final TextEditingController _passwordController = TextEditingController();
-
+  Authentication authentication = Authentication();
   FocusNode f1 = new FocusNode();
   FocusNode f2 = new FocusNode();
   FocusNode f3 = new FocusNode();
@@ -218,7 +221,16 @@ class _SignInState extends State<SignIn> {
                         FlutterIcons.google_ant,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await authentication.googleSignIn().whenComplete(() {
+                          Navigator.pushReplacement(context, PageTransition(
+                            child: HomePage(),
+                            type: PageTransitionType.bottomToTop,
+                          ));
+                        });
+
+
+                      },
                     ),
                   ),
                   SizedBox(
