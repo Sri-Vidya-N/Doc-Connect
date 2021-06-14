@@ -1,12 +1,11 @@
 import 'package:DocConnect/Authentication.dart';
-import 'package:DocConnect/screens/homePage.dart';
+import 'package:DocConnect/mainPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:DocConnect/screens/register.dart';
 import 'package:page_transition/page_transition.dart';
-
 
 import 'package:DocConnect/screens/forgot_password_screen.dart';
 import '../mainPage.dart';
@@ -229,13 +228,13 @@ class _SignInState extends State<SignIn> {
                       ),
                       onPressed: () async {
                         await authentication.googleSignIn().whenComplete(() {
-                          Navigator.pushReplacement(context, PageTransition(
-                            child: HomePage(),
-                            type: PageTransitionType.bottomToTop,
-                          ));
+                          Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                child: MainPage(),
+                                type: PageTransitionType.bottomToTop,
+                              ));
                         });
-
-
                       },
                     ),
                   ),

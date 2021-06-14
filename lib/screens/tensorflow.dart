@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Tensorflow extends StatefulWidget {
   @override
@@ -32,6 +33,28 @@ class _TensorflowState extends State<Tensorflow> {
       numThreads: 1,
     );
   }
+
+  // Future<Widget> createDialog(BuildContext context, String s) {
+  //   return showDialog(
+  //       context: context,
+  //       builder: (_) => new AlertDialog(
+  //             title: new Text("Your results are here!"),
+  //             content: new Text('$s'),
+  //             actions: <Widget>[
+  //               TextButton(
+  //                 child: Text(
+  //                   'Ok',
+  //                   style: TextStyle(
+  //                     fontSize: 18.0,
+  //                   ),
+  //                 ),
+  //                 onPressed: () {
+  //                   Navigator.pushNamed(context, '/SignIn');
+  //                 },
+  //               ),
+  //             ],
+  //           ));
+  // }
 
   classifyImage(File image) async {
     var output = await Tflite.runModelOnImage(
@@ -104,6 +127,7 @@ class _TensorflowState extends State<Tensorflow> {
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20),
                                   )
+                                // ? createDialog(context, _outputs[0]["label"])
                                 : Container(child: Text(""))
                       ],
                     ),
