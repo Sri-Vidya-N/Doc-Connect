@@ -1,4 +1,4 @@
 0 NORMAL
 1 COVID 19
 2 PNEUMONIA
-3 TB
+3 Tuberculosis

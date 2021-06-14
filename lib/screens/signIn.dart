@@ -230,7 +230,7 @@ class _SignInState extends State<SignIn> {
                       onPressed: () async {
                         await authentication.googleSignIn().whenComplete(() {
                           Navigator.pushReplacement(context, PageTransition(
-                            child: HomePage(),
+                            child: MainPage(),
                             type: PageTransitionType.bottomToTop,
                           ));
                         });
