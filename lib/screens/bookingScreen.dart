@@ -18,6 +18,7 @@ class _BookingScreenState extends State<BookingScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
   final TextEditingController _doctorController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _timeController = TextEditingController();
@@ -27,6 +28,7 @@ class _BookingScreenState extends State<BookingScreen> {
   FocusNode f3 = FocusNode();
   FocusNode f4 = FocusNode();
   FocusNode f5 = FocusNode();
+  FocusNode f6 = FocusNode();
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   DateTime selectedDate = DateTime.now();
@@ -261,7 +263,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         },
                         onFieldSubmitted: (String value) {
                           f2.unfocus();
-                          FocusScope.of(context).requestFocus(f3);
+                          FocusScope.of(context).requestFocus(f6);
                         },
                         textInputAction: TextInputAction.next,
                       ),
@@ -294,6 +296,39 @@ class _BookingScreenState extends State<BookingScreen> {
                         ),
                         onFieldSubmitted: (String value) {
                           f3.unfocus();
+                          FocusScope.of(context).requestFocus(f4);
+                        },
+                        textInputAction: TextInputAction.next,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        focusNode: f6,
+                        controller: _addressController,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        style: GoogleFonts.lato(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                        decoration: InputDecoration(
+                          contentPadding:
+                              EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                          border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(90.0)),
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor: Colors.grey[350],
+                          hintText: 'Enter Address',
+                          hintStyle: GoogleFonts.lato(
+                            color: Colors.black26,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        onFieldSubmitted: (String value) {
+                          f6.unfocus();
                           FocusScope.of(context).requestFocus(f4);
                         },
                         textInputAction: TextInputAction.next,
@@ -527,6 +562,7 @@ class _BookingScreenState extends State<BookingScreen> {
       'name': _nameController.text,
       'phone': _phoneController.text,
       'description': _descriptionController.text,
+      'address': _addressController.text,
       'doctor': _doctorController.text,
       'date': DateTime.parse(dateUTC + ' ' + date_Time + ':00'),
     }, SetOptions(merge: true));
@@ -540,6 +576,7 @@ class _BookingScreenState extends State<BookingScreen> {
       'name': _nameController.text,
       'phone': _phoneController.text,
       'description': _descriptionController.text,
+      'address': _addressController.text,
       'doctor': _doctorController.text,
       'date': DateTime.parse(dateUTC + ' ' + date_Time + ':00'),
     }, SetOptions(merge: true));

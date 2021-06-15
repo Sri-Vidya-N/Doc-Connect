@@ -199,6 +199,16 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
                                         height: 10,
                                       ),
                                       Text(
+                                        "Patient's Address: " +
+                                            document['address'],
+                                        style: GoogleFonts.lato(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
                                         "Time: " +
                                             _timeFormatter(
                                               document['date']

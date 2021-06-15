@@ -33,10 +33,7 @@ class Carouselslider extends StatelessWidget {
               onTap: () {
                 index == 0
                     ? Navigator.pushNamed(context, '/Tensorflow')
-                    : Navigator.push(context,
-                        MaterialPageRoute(builder: (BuildContext context) {
-                        return DiseaseDetail(disease: 'Covid-19');
-                      }));
+                    : Navigator.pushNamed(context, '/infoScreen');
               },
               child: Stack(
                 children: [

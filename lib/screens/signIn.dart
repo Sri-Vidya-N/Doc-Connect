@@ -6,7 +6,6 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:DocConnect/screens/register.dart';
 import 'package:page_transition/page_transition.dart';
-
 import 'package:DocConnect/screens/forgot_password_screen.dart';
 import '../mainPage.dart';
 
@@ -228,6 +227,12 @@ class _SignInState extends State<SignIn> {
                       ),
                       onPressed: () async {
                         await authentication.googleSignIn().whenComplete(() {
+                          Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                child: MainPage(),
+                                type: PageTransitionType.bottomToTop,
+                              ));
                           Navigator.pushReplacement(
                               context,
                               PageTransition(

@@ -1,8 +1,15 @@
 import 'dart:io';
+import 'package:DocConnect/mainPage.dart';
+import 'package:DocConnect/screens/MyAlert.dart';
+import 'package:DocConnect/screens/exploreList.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:tflite/tflite.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import 'MyAlert.dart';
+import 'homePage.dart';
 
 class Tensorflow extends StatefulWidget {
   @override
@@ -34,28 +41,6 @@ class _TensorflowState extends State<Tensorflow> {
     );
   }
 
-  // Future<Widget> createDialog(BuildContext context, String s) {
-  //   return showDialog(
-  //       context: context,
-  //       builder: (_) => new AlertDialog(
-  //             title: new Text("Your results are here!"),
-  //             content: new Text('$s'),
-  //             actions: <Widget>[
-  //               TextButton(
-  //                 child: Text(
-  //                   'Ok',
-  //                   style: TextStyle(
-  //                     fontSize: 18.0,
-  //                   ),
-  //                 ),
-  //                 onPressed: () {
-  //                   Navigator.pushNamed(context, '/SignIn');
-  //                 },
-  //               ),
-  //             ],
-  //           ));
-  // }
-
   classifyImage(File image) async {
     var output = await Tflite.runModelOnImage(
         path: image.path,
@@ -68,6 +53,10 @@ class _TensorflowState extends State<Tensorflow> {
       _loading = false;
       _outputs = output;
     });
+
+    if (_outputs[0]["label"].substring(1) != " NORMAL") {
+      showAlertDialog(context, _outputs[0]["label"].substring(1));
+    }
   }
 
   @override
@@ -95,7 +84,7 @@ class _TensorflowState extends State<Tensorflow> {
           "Predicting the Infection",
           style: TextStyle(color: Colors.white, fontSize: 25),
         ),
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.blue[500],
         elevation: 0,
       ),
       body: Container(
@@ -128,7 +117,13 @@ class _TensorflowState extends State<Tensorflow> {
                                         color: Colors.black, fontSize: 20),
                                   )
                                 // ? createDialog(context, _outputs[0]["label"])
-                                : Container(child: Text(""))
+                                : Container(child: Text("")) != null
+                                    ? Text(
+                                        _outputs[0]["label"].substring(1),
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 20),
+                                      )
+                                    : Container(child: Text("")),
                       ],
                     ),
                   ),
@@ -143,11 +138,55 @@ class _TensorflowState extends State<Tensorflow> {
                 size: 20,
                 color: Colors.white,
               ),
-              backgroundColor: Colors.amber,
+              backgroundColor: Colors.blue[400],
             ),
           ],
         ),
       ),
     );
   }
+}
+
+showAlertDialog(BuildContext context, String output) {
+  // Create button
+  Widget homeButton = FlatButton(
+    child: Text("Home Page"),
+    onPressed: () {
+      Navigator.pushReplacement(
+          context,
+          PageTransition(
+            child: MainPage(),
+            type: PageTransitionType.bottomToTop,
+          ));
+    },
+  );
+
+  Widget doctorButton = FlatButton(
+    child: Text("Consult Doctor"),
+    onPressed: () {
+      Navigator.pushReplacement(
+          context,
+          PageTransition(
+            child: MainPage(),
+            type: PageTransitionType.bottomToTop,
+          ));
+    },
+  );
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Results!"),
+    content: Text("$output has been detected!"),
+    actions: [
+      homeButton,
+      doctorButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

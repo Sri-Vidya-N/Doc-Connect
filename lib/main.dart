@@ -8,10 +8,12 @@ import 'package:DocConnect/screens/myAppointments.dart';
 import 'package:DocConnect/screens/skip.dart';
 import 'package:DocConnect/screens/userProfile.dart';
 import 'package:DocConnect/screens/register.dart';
+import 'package:DocConnect/screens/infoScreen.dart';
 import 'package:DocConnect/screens/signIn.dart';
 import 'package:DocConnect/screens/forgot_password_screen.dart';
 import 'package:DocConnect/screens/tensorflow.dart';
 import 'package:DocConnect/screens/homePage.dart';
+import 'package:DocConnect/screens/bookingScreen.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -51,6 +53,7 @@ class MyApp extends StatelessWidget {
         '/SignIn': (context) => SignIn(),
         '/homePage': (context) => HomePage(),
         '/mainPage': (context) => MainPage(),
+        '/infoScreen': (context) => InfoScreen(),
         '/forgotPassword': (context) => ForgotPasswordScreen(),
       },
       theme: ThemeData(brightness: Brightness.light),
