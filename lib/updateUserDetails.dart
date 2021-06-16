@@ -129,9 +129,9 @@ class _UpdateUserDetailsState extends State<UpdateUserDetails> {
       widget.field: _textcontroller.text,
     }, SetOptions(merge: true));
     if (widget.field.compareTo('name') == 0) {
+      // ignore: deprecated_member_use
       await user.updateProfile(displayName: _textcontroller.text);
     }
-    if (widget.field.compareTo('phone') == 0) {
-    }
+    if (widget.field.compareTo('phone') == 0) {}
   }
 }

@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:tflite/tflite.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:DocConnect/model/cardModel.dart';
 
 import 'MyAlert.dart';
 import 'homePage.dart';
@@ -164,12 +165,13 @@ showAlertDialog(BuildContext context, String output) {
   Widget doctorButton = FlatButton(
     child: Text("Consult Doctor"),
     onPressed: () {
-      Navigator.pushReplacement(
-          context,
-          PageTransition(
-            child: MainPage(),
-            type: PageTransitionType.bottomToTop,
-          ));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ExploreList(
+                  type: cards[0].doctor,
+                )),
+      );
     },
   );
   // Create AlertDialog

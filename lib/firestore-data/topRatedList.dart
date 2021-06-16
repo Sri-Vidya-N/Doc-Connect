@@ -10,7 +10,6 @@ class TopRatedList extends StatefulWidget {
 }
 
 class _TopRatedListState extends State<TopRatedList> {
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -100,7 +99,9 @@ class _TopRatedListState extends State<TopRatedList> {
                                     size: 20,
                                     color: Colors.indigo[400],
                                   ),
-                                  SizedBox(width: 3,),
+                                  SizedBox(
+                                    width: 3,
+                                  ),
                                   Text(
                                     doctor['rating'].toString(),
                                     style: GoogleFonts.lato(

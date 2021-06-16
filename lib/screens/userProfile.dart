@@ -197,40 +197,42 @@ class _UserProfileState extends State<UserProfile> {
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.blueGrey[50],
                 ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
-                          child: Container(
-                            height: 27,
-                            width: 27,
-                            color: Colors.indigo[600],
-                            child: Icon(
-                              FlutterIcons.pencil_ent,
-                              color: Colors.white,
-                              size: 16,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: Container(
+                              height: 27,
+                              width: 27,
+                              color: Colors.indigo[600],
+                              child: Icon(
+                                FlutterIcons.pencil_ent,
+                                color: Colors.white,
+                                size: 16,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Bio',
-                          style: GoogleFonts.lato(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                          SizedBox(
+                            width: 10,
                           ),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      child: getBio(),
-                    )
-                  ],
+                          Text(
+                            'Bio',
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        child: getBio(),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(
