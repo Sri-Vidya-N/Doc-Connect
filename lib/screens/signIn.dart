@@ -1,5 +1,6 @@
 import 'package:DocConnect/Authentication.dart';
 import 'package:DocConnect/mainPage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -24,6 +25,7 @@ class _SignInState extends State<SignIn> {
   FocusNode f1 = new FocusNode();
   FocusNode f2 = new FocusNode();
   FocusNode f3 = new FocusNode();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -227,6 +229,15 @@ class _SignInState extends State<SignIn> {
                       ),
                       onPressed: () async {
                         await authentication.googleSignIn().whenComplete(() {
+                          final User currentUser = _firebaseAuth.currentUser;
+                          FirebaseFirestore.instance.collection('users').doc(currentUser.uid).set({
+                            'name': currentUser.displayName,
+                            'birthDate': null,
+                            'email': currentUser.email,
+                            'phone': null,
+                            'bio': null,
+                            'city': null,
+                          }, SetOptions(merge: true));
                           Navigator.pushReplacement(
                               context,
                               PageTransition(
@@ -240,6 +251,7 @@ class _SignInState extends State<SignIn> {
                                 type: PageTransitionType.bottomToTop,
                               ));
                         });
+
                       },
                     ),
                   ),

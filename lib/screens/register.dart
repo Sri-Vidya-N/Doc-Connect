@@ -5,6 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:DocConnect/screens/signIn.dart';
+import 'package:page_transition/page_transition.dart';
+
+import '../Authentication.dart';
+import '../mainPage.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -19,7 +23,8 @@ class _RegisterState extends State<Register> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmController =
       TextEditingController();
-
+  Authentication authentication = Authentication();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   FocusNode f1 = new FocusNode();
   FocusNode f2 = new FocusNode();
   FocusNode f3 = new FocusNode();
@@ -293,7 +298,33 @@ class _RegisterState extends State<Register> {
                         FlutterIcons.google_ant,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await authentication.googleSignIn().whenComplete(() {
+
+                          final User currentUser = _firebaseAuth.currentUser;
+                          FirebaseFirestore.instance.collection('users').doc(currentUser.uid).set({
+                            'name': currentUser.displayName,
+                            'birthDate': null,
+                            'email': currentUser.email,
+                            'phone': null,
+                            'bio': null,
+                            'city': null,
+                          }, SetOptions(merge: true));
+                          Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                child: MainPage(),
+                                type: PageTransitionType.bottomToTop,
+                              ));
+                          Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                child: MainPage(),
+                                type: PageTransitionType.bottomToTop,
+                              ));
+                        });
+
+                      },
                     ),
                   ),
                 ],

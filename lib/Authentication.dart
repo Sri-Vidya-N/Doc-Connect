@@ -29,4 +29,10 @@ class Authentication{
 
   }
 
+  String returnEmail() {
+
+    final User currentUser = _firebaseAuth.currentUser;
+    return currentUser.email;
+}
+
 }
