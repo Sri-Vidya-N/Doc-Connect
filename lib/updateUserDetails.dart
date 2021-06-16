@@ -100,6 +100,7 @@ class _UpdateUserDetailsState extends State<UpdateUserDetails> {
                 onPressed: () {
                   FocusScope.of(context).unfocus();
                   updateData();
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 2,

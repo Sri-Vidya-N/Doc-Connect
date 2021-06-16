@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => user == null ? Skip() : MainPage(),
+        '/': (context) => user == null ? Skip() : SignIn(),
         '/login': (context) => FireBaseAuth(),
         '/home': (context) => MainPage(),
         '/profile': (context) => UserProfile(),

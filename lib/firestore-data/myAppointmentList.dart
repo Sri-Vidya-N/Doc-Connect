@@ -185,41 +185,43 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Patient name: " + document['name'],
-                                        style: GoogleFonts.lato(
-                                          fontSize: 16,
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Patient name: " + document['name'],
+                                          style: GoogleFonts.lato(
+                                            fontSize: 16,
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        "Patient's Address: " +
-                                            document['address'],
-                                        style: GoogleFonts.lato(
-                                          fontSize: 16,
+                                        SizedBox(
+                                          height: 10,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        "Time: " +
-                                            _timeFormatter(
-                                              document['date']
-                                                  .toDate()
-                                                  .toString(),
-                                            ),
-                                        style: GoogleFonts.lato(
-                                          fontSize: 16,
+                                        Text(
+                                          "Patient's Address: " +
+                                              document['address'],
+                                          style: GoogleFonts.lato(
+                                            fontSize: 16,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          "Time: " +
+                                              _timeFormatter(
+                                                document['date']
+                                                    .toDate()
+                                                    .toString(),
+                                              ),
+                                          style: GoogleFonts.lato(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   IconButton(
                                     tooltip: 'Delete Appointment',
