@@ -39,20 +39,17 @@ class _MyHeaderState extends State<MyHeader> {
           ),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return InfoScreen();
-                    },
-                  ),
-                );
+            IconButton(
+              icon: Icon(
+                Icons.chevron_left_sharp,
+                color: Colors.white,
+                size: 30,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
               },
-              child: SvgPicture.asset("assets/menu.svg"),
             ),
             SizedBox(height: 20),
             Expanded(

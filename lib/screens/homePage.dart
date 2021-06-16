@@ -253,12 +253,7 @@ class _HomePageState extends State<HomePage> {
                                   spreadRadius: 0.0,
                                   offset: Offset(3, 3),
                                 ),
-                              ]
-                              // image: DecorationImage(
-                              //   image: AssetImage(cards[index].cardImage),
-                              //   fit: BoxFit.fill,
-                              // ),
-                              ),
+                              ]),
                           // ignore: deprecated_member_use
                           child: FlatButton(
                             onPressed: () {
