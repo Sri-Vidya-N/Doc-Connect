@@ -55,7 +55,7 @@ class _SearchListState extends State<SearchList> {
                     ),
                   )
                 : Scrollbar(
-                  child: ListView.builder(
+                    child: ListView.builder(
                       scrollDirection: Axis.vertical,
                       physics: ClampingScrollPhysics(),
                       shrinkWrap: true,
@@ -91,7 +91,8 @@ class _SearchListState extends State<SearchList> {
                                   //mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
                                     CircleAvatar(
-                                      backgroundImage: NetworkImage(doctor['image']),
+                                      backgroundImage:
+                                          NetworkImage(doctor['image']),
                                       //backgroundColor: Colors.blue,
                                       radius: 25,
                                     ),
@@ -101,7 +102,8 @@ class _SearchListState extends State<SearchList> {
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(
                                           doctor['name'],
@@ -159,7 +161,7 @@ class _SearchListState extends State<SearchList> {
                         );
                       },
                     ),
-                );
+                  );
           },
         ),
       ),
