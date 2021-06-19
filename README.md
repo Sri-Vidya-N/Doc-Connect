@@ -39,7 +39,7 @@ users
 <h3>Some features still under development</h3>
 
 - Notification
-- Disease
-- Google Sign in
-- Forgot password
-- Intoduction sceens
+- Doctor Screen to take up appointments
+
+ 
+
