@@ -1,6 +1,6 @@
 # DoConnect
 
-This is UI model of the Online Doctor Appointment booking App. It is connected to firebase for authentication and data storage.
+This is UI model predcitor of Covid-19/Tuberculosis/Pneumonia and doctor consultation App. It is connected to firebase for authentication and data storage.
 
 <p align="center">
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fdc-exe%2FDocConnect&count_bg=%2379C83D&title_bg=%23555555&icon=flutter.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
