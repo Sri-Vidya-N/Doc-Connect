@@ -34,7 +34,7 @@ users
 
 <h2>Pull Requests</h2>
 <p>Add a pull request to contribute to this project with a proper fix or feature.</p>
-<br/>
+
 
 <h3>Some features still under development</h3>
 
