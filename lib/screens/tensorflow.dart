@@ -181,7 +181,7 @@ showAlert(context) {
         child: const Text('Yes'),
       ),
       TextButton(
-        onPressed: () => _launchInBrowser,
+        onPressed: () => _launchInBrowser(_url),
         child: const Text('No'),
       ),
     ],
@@ -209,7 +209,7 @@ createFirstDialog(BuildContext context) {
         child: const Text('Yes'),
       ),
       TextButton(
-        onPressed: () => _launchInBrowser,
+        onPressed: () => _launchInBrowser(_url),
         child: const Text('No'),
       ),
     ],
