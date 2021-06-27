@@ -8,9 +8,12 @@ import 'package:page_transition/page_transition.dart';
 import 'package:tflite/tflite.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:DocConnect/model/cardModel.dart';
-
+import 'package:url_launcher/url_launcher.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'MyAlert.dart';
 import 'homePage.dart';
+
+const _url = 'https://selfregistration.cowin.gov.in/';
 
 class Tensorflow extends StatefulWidget {
   @override
@@ -26,6 +29,7 @@ class _TensorflowState extends State<Tensorflow> {
   void initState() {
     super.initState();
     _loading = true;
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
 
     loadModel().then((value) {
       setState(() {
@@ -57,6 +61,8 @@ class _TensorflowState extends State<Tensorflow> {
 
     if (_outputs[0]["label"].substring(1) != " NORMAL") {
       showAlertDialog(context, _outputs[0]["label"].substring(1));
+    } else {
+      showAlert(context);
     }
   }
 
@@ -148,6 +154,74 @@ class _TensorflowState extends State<Tensorflow> {
   }
 }
 
+// Future<void> _launchURL() async =>
+//     await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
+Future<void> _launchInBrowser(String url) async {
+  if (await canLaunch(url)) {
+    await launch(
+      url,
+      forceSafariVC: false,
+      forceWebView: false,
+      headers: <String, String>{'header_key': 'header_value'},
+    );
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+showAlert(context) {
+  AlertDialog alert = AlertDialog(
+    title: Text("You are healthy!"),
+    content: Text("Did you get your first dose of COVID-19 Vaccine?"),
+    actions: [
+      TextButton(
+        onPressed: () => {
+          createFirstDialog(context),
+        },
+        child: const Text('Yes'),
+      ),
+      TextButton(
+        onPressed: () => _launchInBrowser,
+        child: const Text('No'),
+      ),
+    ],
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+createFirstDialog(BuildContext context) {
+  AlertDialog al = AlertDialog(
+    title: const Text('Great!'),
+    content: const Text('Did you get your second dose of COVID-19 Vaccine?'),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () => Navigator.pushReplacement(
+            context,
+            PageTransition(
+              child: MainPage(),
+              type: PageTransitionType.bottomToTop,
+            )),
+        child: const Text('Yes'),
+      ),
+      TextButton(
+        onPressed: () => _launchInBrowser,
+        child: const Text('No'),
+      ),
+    ],
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return al;
+    },
+  );
+}
+
 showAlertDialog(BuildContext context, String output) {
   // Create button
   Widget homeButton = FlatButton(
@@ -177,7 +251,7 @@ showAlertDialog(BuildContext context, String output) {
   // Create AlertDialog
   AlertDialog alert = AlertDialog(
     title: Text("Results!"),
-    content: Text("$output has been detected!"),
+    content: Text("$output has been detected. Kindly consult a doctor!"),
     actions: [
       homeButton,
       doctorButton,

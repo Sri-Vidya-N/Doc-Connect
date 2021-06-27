@@ -412,7 +412,7 @@ class _BookingScreenState extends State<BookingScreen> {
                               padding: const EdgeInsets.only(right: 5.0),
                               child: ClipOval(
                                 child: Material(
-                                  color: Colors.indigo, // button color
+                                  color: Colors.black, // button color
                                   child: InkWell(
                                     // inkwell color
                                     child: SizedBox(
@@ -461,7 +461,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                 hintText: 'Select Time*',
                                 hintStyle: GoogleFonts.lato(
                                   color: Colors.black26,
-                                  fontSize: 18,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.w800,
                                 ),
                               ),
@@ -513,7 +513,7 @@ class _BookingScreenState extends State<BookingScreen> {
                           style: ElevatedButton.styleFrom(
                             elevation: 2,
                             primary: Colors.indigo,
-                            onPrimary: Colors.black,
+                            onPrimary: Colors.indigo,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32.0),
                             ),
