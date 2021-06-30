@@ -154,7 +154,7 @@ class _TensorflowState extends State<Tensorflow> {
   }
 }
 
-// Future<void> _launchURL() async =>
+// Future<void> _launchURL() async =>s  
 //     await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
 Future<void> _launchInBrowser(String url) async {
   if (await canLaunch(url)) {

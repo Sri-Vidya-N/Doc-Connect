@@ -2,6 +2,13 @@ import 'package:DocConnect/screens/constant.dart';
 import 'package:DocConnect/model/my_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+List<String> li = [
+  'https://www.mohfw.gov.in/pdf/RevisedGuidelineshomeisolation4.pdf',
+  'https://apollohomecare.com/services/medical-equipment/oxygen-cylinder/',
+  'http://164.100.112.24/SpringMVC/Hospital_Beds_Statistic_Dashboard.htm'
+];
 
 class InfoScreen extends StatefulWidget {
   @override
@@ -77,19 +84,25 @@ class _InfoScreenState extends State<InfoScreen> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Text("Prevention", style: kTitleTextstyle),
+                  Text("We care for you!", style: kTitleTextstyle),
                   SizedBox(height: 20),
                   PreventCard(
                     text:
-                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
+                        "Revised guidelines for home isolation of mild/asymptomatic covid-19 cases",
                     image: "assets/wear_mask.png",
-                    title: "Wear face mask",
+                    title: "Guidelines",
                   ),
                   PreventCard(
                     text:
-                        "Since the start of the coronavirus outbreak some places have fully embraced washing hands",
-                    image: "assets/wash_hands.png",
-                    title: "Wash your hands",
+                        "During these challenging times, finding an oxygen cylinder has become a herculean task. But, we can facilitate you with finding one!",
+                    image: "assets/cylinder.png",
+                    title: "Oxygen cylinder availability",
+                  ),
+                  PreventCard(
+                    text:
+                        "Find out the COVID-19 Hospital Bed Availability Status",
+                    image: "assets/Bed.png",
+                    title: "Hospital Bed Availability",
                   ),
                   SizedBox(height: 50),
                 ],
@@ -99,6 +112,19 @@ class _InfoScreenState extends State<InfoScreen> {
         ),
       ),
     );
+  }
+}
+
+Future<void> _launchInBrowser(String url) async {
+  if (await canLaunch(url)) {
+    await launch(
+      url,
+      forceSafariVC: false,
+      forceWebView: false,
+      headers: <String, String>{'header_key': 'header_value'},
+    );
+  } else {
+    throw 'Could not launch $url';
   }
 }
 
@@ -137,9 +163,12 @@ class PreventCard extends StatelessWidget {
                 ],
               ),
             ),
-            Image.asset(image),
+            Container(
+              height: 130.0,
+              child: Image.asset(image),
+            ),
             Positioned(
-              left: 130,
+              left: 140,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 height: 136,
@@ -152,21 +181,39 @@ class PreventCard extends StatelessWidget {
                       title,
                       style: kTitleTextstyle.copyWith(
                         fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
+                    ),
+                    SizedBox(
+                      height: 4.0,
                     ),
                     Expanded(
                       child: Text(
                         text,
-                        maxLines: 4,
+                        maxLines: 5,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 13,
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: SvgPicture.asset("assets/forward.svg"),
+                    GestureDetector(
+                      onTap: () {
+                        if (title == 'Guidelines') {
+                          _launchInBrowser(li[0]);
+                        } else if (title == 'Oxygen cylinder availability') {
+                          _launchInBrowser(li[1]);
+                        } else {
+                          _launchInBrowser(li[2]);
+                        }
+                      },
+                      child: Align(
+                          alignment: Alignment.topRight,
+                          child: Icon(
+                            Icons.chevron_right_rounded,
+                            color: Colors.lightBlue[900],
+                            size: 20,
+                          )),
                     ),
                   ],
                 ),

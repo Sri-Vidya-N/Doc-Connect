@@ -77,8 +77,11 @@ flutter:
     - assets/coronadr.svg
     - assets/cough.png
     - assets/virus.png
+    - assets/cylinder.png
+    - assets/Bed.png
     - assets/headache.png
     - assets/fever.png
+    - assets/Back.png
     - assets/wear_mask.png
     - assets/wash_hands.png
     - assets/model_unquant.tflite

@@ -28,7 +28,7 @@ class _SignInState extends State<SignIn> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return Scaffold(
       backgroundColor: Colors.white,
       key: _scaffoldKey,
